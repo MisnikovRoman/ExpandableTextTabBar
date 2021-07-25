@@ -1,6 +1,9 @@
 import SwiftUI
 
 struct TabBarView: View {
+    
+    private let animationDuration = 0.3
+    
     let items: [TabItem]
     @Binding var selection: Int
     
@@ -13,7 +16,7 @@ struct TabBarView: View {
                     .onTapGesture { selection = index(of: item) }
                 Spacer()
             }
-            .animation(.easeIn(duration: 0.3))
+            .animation(.easeIn(duration: animationDuration))
         }
     }
     

@@ -2,6 +2,9 @@ import SwiftUI
 
 /// Tab bar view with expanding text
 public struct ExpandableTextTabView<TabView: View>: View {
+    
+    private let tabBarViewHorizontalPadding: CGFloat = 16
+    
     @State var selection: Int = 0
     let tabs: [Tab<TabView>]
     
@@ -17,28 +20,36 @@ public struct ExpandableTextTabView<TabView: View>: View {
             VStack {
                 Spacer()
                 TabBarView(items: tabs.map(\.item), selection: $selection)
-                    .padding(.horizontal, 16)
+                    .padding(.horizontal, tabBarViewHorizontalPadding)
             }
         }
     }
 }
 
 struct ExpandableTextTabView_Previews: PreviewProvider {
+    static let items = [
+        Tab(image: Image(systemName: "house"),
+            name: "Home",
+            color: .purple) { Text("Home").font(.largeTitle).bold() },
+        Tab(image: Image(systemName: "heart"),
+            name: "Likes",
+            color: .pink) { Text("Likes").font(.largeTitle).bold() },
+        Tab(image: Image(systemName: "magnifyingglass"),
+            name: "Search",
+            color: .orange) { Text("Search").font(.largeTitle).bold() },
+        Tab(image: Image(systemName: "person"),
+            name: "Profile",
+            color: .blueGreenCraiola) { Text("Profile").font(.largeTitle).bold() }
+    ]
+    
     static var previews: some View {
-        ExpandableTextTabView(tabs: [
-            Tab(image: Image(systemName: "house"),
-                name: "Home",
-                color: .purple) { Text("Home").font(.largeTitle).bold() },
-            Tab(image: Image(systemName: "heart"),
-                name: "Likes",
-                color: .pink) { Text("Likes").font(.largeTitle).bold() },
-            Tab(image: Image(systemName: "magnifyingglass"),
-                name: "Search",
-                color: .orange) { Text("Search").font(.largeTitle).bold() },
-            Tab(image: Image(systemName: "person"),
-                name: "Profile",
-                color: .blueGreenCraiola) { Text("Profile").font(.largeTitle).bold() }
-        ])
+        Group {
+            ExpandableTextTabView(tabs: items)
+                .environment(\.colorScheme, .light)
+            ExpandableTextTabView(tabs: items)
+                .environment(\.colorScheme, .dark)
+                .background(Color.black)
+        }
     }
 }
 
