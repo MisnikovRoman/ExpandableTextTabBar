@@ -8,7 +8,7 @@ Inpired by Aurélien Salomon ([Google Bottom Bar Navigation Pattern - Mobile UX 
 
 # Example
 
-## [⚠️ INSERT GIF]
+![giphy](https://user-images.githubusercontent.com/36447757/126905682-78297832-fc0b-42fe-b3ac-40782f2f5510.gif)
 
 ```swift
 import ExpandableTextTabBar
