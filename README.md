@@ -11,6 +11,8 @@ Inpired by Aurélien Salomon ([Google Bottom Bar Navigation Pattern - Mobile UX 
 ## [⚠️ INSERT GIF]
 
 ```swift
+import ExpandableTextTabBar
+
 struct ContentView: View {
     var body: some View {
         CustomTabView(tabs: [
